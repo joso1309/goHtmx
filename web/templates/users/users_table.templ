@@ -1,0 +1,43 @@
+package users
+
+import (
+	"goHtmx/internal/models"
+	"fmt"
+)
+
+func getPath(id int) string {
+	return fmt.Sprintf("/users/%d", id)
+}
+
+templ UsersTable(items []models.User) {
+	<div id="users-table">
+		<p class="pr-4 pb-4 text-xl font-bold">Users</p>
+		<div class="overflow-x-auto border rounded-xl border-gray-200">
+			<table class="min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
+				<thead class="text-left">
+					<tr>
+						<th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Name</th>
+						<th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Date of Birth</th>
+						<th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Email</th>
+						<th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Salary</th>
+					</tr>
+				</thead>
+				<tbody class="divide-y divide-gray-200" hx-push-url="true">
+					for _, item := range items {
+						<tr
+							class="odd:bg-gray-50"
+							hx-get={ getPath(item.ID) }
+							hx-swap="outerHTML"
+							hx-target="#users-table"
+						>
+							<td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">{ item.FirstName } { item.LastName }</td>
+							<td class="whitespace-nowrap px-4 py-2 text-gray-700">13/09/1988</td>
+							<td class="whitespace-nowrap px-4 py-2 text-gray-700">{ item.Email }</td>
+							<td class="whitespace-nowrap px-4 py-2 text-gray-700">$120,000</td>
+						</tr>
+					}
+				</tbody>
+			</table>
+		</div>
+	</div>
+}
