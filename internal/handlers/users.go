@@ -6,6 +6,7 @@ import (
 	"strconv"
 
 	"github.com/labstack/echo/v4"
+	"github.com/labstack/gommon/log"
 )
 
 func GetUsers(c echo.Context) error {
@@ -32,6 +33,10 @@ func GetUser(c echo.Context) error {
 
 func EditUser(c echo.Context) error {
 
+	var user models.User
+	c.Bind(&user)
+
+	log.Info("name:", user.FirstName+" "+user.LastName, " select:", user.Select, " datetime:", user.Date+" "+user.Time)
 	return GetUsers(c)
 }
 
@@ -42,5 +47,4 @@ func fetchUser(id int) models.User {
 		LastName:  "Razov",
 		Email:     "joso.razov@gmail.com",
 	}
-
 }

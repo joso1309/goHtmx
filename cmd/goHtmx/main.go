@@ -32,4 +32,5 @@ func RegisterRoutes(e *echo.Echo) {
 	e.POST("/users", handlers.EditUser)
 
 	e.GET("/login", handlers.Login)
+	e.POST("/login", handlers.Authorize)
 }

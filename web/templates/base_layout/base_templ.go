@@ -104,28 +104,3 @@ func Base() templ.Component {
 		return templ_7745c5c3_Err
 	})
 }
-
-// templ Base(component templ.Component) {
-// 	<!DOCTYPE html>
-// 	<html>
-// 		<head>
-// 			<title>TestApp</title>
-// 			<meta charset="UTF-8"/>
-// 			<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-// 			<link href="/static/styles.css" rel="stylesheet"/>
-// 			<script src="/static/htmx.min.js"></script>
-// 		</head>
-// 		<body id="body">
-// 			<div class="flex h-screen bg-gray-100">
-// 				@SideBar()
-// 				<div class="flex flex-col flex-1 overflow-y-auto">
-// 					@Header()
-// 					<!-- Main content -->
-// 					<article id="content" class="m-4 rounded-xl  bg-white p-4 ring ring-indigo-50 sm:p-6 lg:p-8">
-// 						@component
-// 					</article>
-// 				</div>
-// 			</div>
-// 		</body>
-// 	</html>
-// }
