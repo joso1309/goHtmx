@@ -1,6 +1,6 @@
 package layout
 
-templ Login() {
+templ Login(loginFailed bool) {
 	@Base() {
 		<div class="flex h-screen bg-gray-100 justify-center items-center">
 			<div
@@ -12,10 +12,14 @@ templ Login() {
 						hx-post="/login"
 						hx-swap="outerHTML"
 						hx-target="#body"
-						hx-replace-url="/"
 						hx-encoding="application/json"
 						class="mt-8 grid grid-cols-6 gap-6"
 					>
+						if loginFailed {
+							<div role="alert" class="col-span-12 rounded border-s-4 border-red-500 bg-red-50 p-4">
+								<strong class="block font-medium text-red-800">Login failed !</strong>
+							</div>
+						}
 						<div class="col-span-12">
 							<input
 								class="w-full rounded-lg border border-grey-600 p-3 text-sm"

@@ -2,9 +2,13 @@ package main
 
 import (
 	"goHtmx/internal/handlers"
+	"net/http"
 
+	"github.com/gorilla/sessions"
+	"github.com/labstack/echo-contrib/session"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
+	"github.com/labstack/gommon/log"
 )
 
 func main() {
@@ -14,6 +18,7 @@ func main() {
 		Format: "time=${time_rfc3339_nano} method=${method}, uri=${uri}, status=${status}, error:${error}\n",
 	}))
 	e.Use(middleware.Recover())
+	e.Use(session.Middleware(sessions.NewCookieStore([]byte("secret"))))
 
 	// e.Static("/static", "../../web/static") // on debug
 	// e.Static("/static", "static") // on prod
@@ -25,12 +30,24 @@ func main() {
 }
 
 func RegisterRoutes(e *echo.Echo) {
-	e.GET("/", handlers.Home)
+	e.GET("/", handlers.Home, isAuthenticated)
 
-	e.GET("/users", handlers.GetUsers)
-	e.GET("/users/:id", handlers.GetUser)
-	e.POST("/users", handlers.EditUser)
+	e.GET("/users", handlers.GetUsers, isAuthenticated)
+	e.GET("/users/:id", handlers.GetUser, isAuthenticated)
+	e.POST("/users", handlers.EditUser, isAuthenticated)
 
 	e.GET("/login", handlers.Login)
 	e.POST("/login", handlers.Authorize)
+	e.GET("/logout", handlers.Logout)
+}
+
+func isAuthenticated(next echo.HandlerFunc) echo.HandlerFunc {
+	return func(c echo.Context) error {
+		sess, _ := session.Get("session", c)
+		log.Info(sess)
+		if auth, ok := sess.Values["authenticated"].(bool); !ok || !auth {
+			return c.Redirect(http.StatusFound, "/login")
+		}
+		return next(c)
+	}
 }
