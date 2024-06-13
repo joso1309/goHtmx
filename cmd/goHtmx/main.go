@@ -8,7 +8,6 @@ import (
 	"github.com/labstack/echo-contrib/session"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
-	"github.com/labstack/gommon/log"
 )
 
 func main() {
@@ -44,7 +43,6 @@ func RegisterRoutes(e *echo.Echo) {
 func isAuthenticated(next echo.HandlerFunc) echo.HandlerFunc {
 	return func(c echo.Context) error {
 		sess, _ := session.Get("session", c)
-		log.Info(sess)
 		if auth, ok := sess.Values["authenticated"].(bool); !ok || !auth {
 			return c.Redirect(http.StatusFound, "/login")
 		}
