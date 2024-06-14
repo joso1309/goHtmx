@@ -15,7 +15,7 @@ import (
 	"goHtmx/internal/types"
 )
 
-func getPath(id int) string {
+func getPath(id uint) string {
 	return fmt.Sprintf("/users/%d", id)
 }
 
