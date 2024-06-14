@@ -1,11 +1,11 @@
 package users
 
 import (
-	"goHtmx/internal/models"
+	"goHtmx/internal/types"
 	"time"
 )
 
-templ UserForm(user models.User) {
+templ UserForm(user types.User) {
 	<form
 		hx-post="/users"
 		hx-push-url="true"

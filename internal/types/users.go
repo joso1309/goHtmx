@@ -1,7 +1,7 @@
-package models
+package types
 
 type User struct {
-	ID        int
+	ID        uint
 	FirstName string `form:"firstname"`
 	LastName  string `form:"lastname"`
 	Email     string `form:"email"`
