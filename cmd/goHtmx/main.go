@@ -52,6 +52,7 @@ func RegisterRoutes(e *echo.Echo) {
 
 	e.GET("/users", handlers.GetUsers, isAuthenticated)
 	e.GET("/users/:id", handlers.GetUser, isAuthenticated)
+	e.DELETE("/users/:id", handlers.DeleteUser, isAuthenticated)
 	e.POST("/users", handlers.EditUser, isAuthenticated)
 
 	e.GET("/login", handlers.Login)

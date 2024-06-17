@@ -16,8 +16,8 @@ func (ctx *DbContext) GetUserByID(id uint) (*User, error) {
 	return &user, nil
 }
 
-func (ctx *DbContext) CreateUser(user *User) error {
-	return ctx.Db.Create(user).Error
+func (ctx *DbContext) SaveUser(user *User) error {
+	return ctx.Db.Save(user).Error
 }
 
 func (ctx *DbContext) DeleteUser(id uint) error {

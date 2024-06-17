@@ -12,6 +12,16 @@ func getPath(id uint) string {
 templ UsersTable(items []types.User) {
 	<div id="users-table">
 		<p class="pr-4 pb-4 text-xl font-bold">Users</p>
+		<div class="pb-4">
+			<button
+				hx-get={ getPath(0) }
+				hx-swap="outerHTML"
+				hx-target="#users-table"
+				class="rounded-lg border border-black bg-black px-2 py-3 text-sm font-medium text-white hover:bg-transparent hover:text-black"
+			>
+				New user
+			</button>
+		</div>
 		<div class="overflow-x-auto border rounded-xl border-gray-200">
 			<table class="min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
 				<thead class="text-left">
@@ -20,6 +30,7 @@ templ UsersTable(items []types.User) {
 						<th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Date of Birth</th>
 						<th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Email</th>
 						<th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Salary</th>
+						<th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900"></th>
 					</tr>
 				</thead>
 				<tbody class="divide-y divide-gray-200" hx-push-url="true">
@@ -34,6 +45,16 @@ templ UsersTable(items []types.User) {
 							<td class="whitespace-nowrap px-4 py-2 text-gray-700">13/09/1988</td>
 							<td class="whitespace-nowrap px-4 py-2 text-gray-700">{ item.Email }</td>
 							<td class="whitespace-nowrap px-4 py-2 text-gray-700">$120,000</td>
+							<td class="grid grid-cols-1 px-4 py-2 text-gray-700">
+								<button
+									hx-delete={ getPath(item.ID) }
+									hx-target="#content"
+									hx-swap="innerHTML"
+									class="rounded-lg border border-black bg-black px-2 py-3 text-sm font-medium text-white hover:bg-transparent hover:text-black"
+								>
+									Delete
+								</button>
+							</td>
 						</tr>
 					}
 				</tbody>

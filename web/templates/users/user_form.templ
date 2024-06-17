@@ -3,6 +3,7 @@ package users
 import (
 	"goHtmx/internal/types"
 	"time"
+	"fmt"
 )
 
 templ UserForm(user types.User) {
@@ -12,6 +13,7 @@ templ UserForm(user types.User) {
 		hx-swap="outerHTML"
 		class="space-y-4"
 	>
+		<input type="hidden" name="id" value={ fmt.Sprintf("%d", user.ID) }/>
 		<div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
 			<div>
 				<label class="text-md py-2 font-medium text-gray-700" for="firstName">First name</label>
