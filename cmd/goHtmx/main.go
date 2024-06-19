@@ -58,6 +58,9 @@ func RegisterRoutes(e *echo.Echo) {
 	e.GET("/login", handlers.Login)
 	e.POST("/login", handlers.Authorize)
 	e.GET("/logout", handlers.Logout)
+
+	e.GET("/documents", handlers.DocumentPage, isAuthenticated)
+	e.POST("/documents", handlers.UploadDocument, isAuthenticated)
 }
 
 func isAuthenticated(next echo.HandlerFunc) echo.HandlerFunc {
