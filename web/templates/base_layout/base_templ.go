@@ -45,7 +45,7 @@ func App(component templ.Component) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<!-- Main content --><article id=\"content\" class=\"mr-4 mt-24 ml-80 rounded-xl bg-white p-4 ring ring-indigo-50 sm:p-6 lg:p-8\">")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<!-- Main content --><article id=\"content\" class=\"mr-4 mt-24 mb-4 ml-80 rounded-xl bg-white p-4 ring ring-indigo-50 sm:p-6 lg:p-8\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
