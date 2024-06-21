@@ -29,12 +29,12 @@ func Login(loginFailed bool) templ.Component {
 				templ_7745c5c3_Buffer = templ.GetBuffer()
 				defer templ.ReleaseBuffer(templ_7745c5c3_Buffer)
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"flex h-screen bg-gray-100 justify-center items-center\"><div class=\"w-2/3 h-2/3   bg-cover bg-center rounded-2xl shadow-2xl\" style=\"background-image: url(&#39;/static/img/login_bg.jpg&#39;); \"><div class=\"w-1/2 p-4 text-center sm:p-6 md:col-span-2 lg:p-8\"><form hx-post=\"/login\" hx-swap=\"outerHTML\" hx-target=\"#body\" hx-encoding=\"application/json\" class=\"mt-8 grid grid-cols-6 gap-6\">")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"flex h-screen bg-gray-100 justify-center items-center\"><div class=\"w-2/3 h-2/3   bg-cover bg-center rounded-2xl shadow-2xl\" style=\"background-image: url(&#39;/static/img/login_bg.jpg&#39;); \"><div class=\"w-1/2 p-4 text-center sm:p-6 md:col-span-2 lg:p-8\"><p class=\"px-4 py-4 text-xl font-bold\">Prijava</p><form hx-post=\"/login\" hx-swap=\"outerHTML\" hx-target=\"#body\" hx-encoding=\"application/json\" class=\"mt-8 grid grid-cols-6 gap-6\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			if loginFailed {
-				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div role=\"alert\" class=\"col-span-12 rounded border-s-4 border-red-500 bg-red-50 p-4\"><strong class=\"block font-medium text-red-800\">Login failed !</strong></div>")
+				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div role=\"alert\" class=\"col-span-12 rounded border-s-4 border-red-500 bg-red-50 p-4\"><strong class=\"block font-medium text-red-800\">Neuspiješna prijava !</strong></div>")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}

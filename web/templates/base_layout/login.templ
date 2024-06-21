@@ -8,6 +8,7 @@ templ Login(loginFailed bool) {
 				style="background-image: url('/static/img/login_bg.jpg'); "
 			>
 				<div class="w-1/2 p-4 text-center sm:p-6 md:col-span-2 lg:p-8">
+					<p class="px-4 py-4 text-xl font-bold">Prijava</p>
 					<form
 						hx-post="/login"
 						hx-swap="outerHTML"
@@ -17,7 +18,7 @@ templ Login(loginFailed bool) {
 					>
 						if loginFailed {
 							<div role="alert" class="col-span-12 rounded border-s-4 border-red-500 bg-red-50 p-4">
-								<strong class="block font-medium text-red-800">Login failed !</strong>
+								<strong class="block font-medium text-red-800">Neuspiješna prijava !</strong>
 							</div>
 						}
 						<div class="col-span-12">
